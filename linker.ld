@@ -1,14 +1,16 @@
 OUTPUT_FORMAT("binary")
-ENTRY(_start)
+ENTRY(_kstart)
 
 SECTIONS
 {
-    . = 0x7C00;
+    /* Ядро загружается в физический адрес 0x1000 */
+    . = 0x1000;
 
     .text :
     {
-        boot.o(.text)
-        *(.text)
+        /* ОБЯЗАТЕЛЬНО первым: точка входа из загрузчика */
+        kernel_entry.o(.text.entry)
+        *(.text*)
     }
 
     .rodata :
@@ -18,21 +20,12 @@ SECTIONS
 
     .data :
     {
-        *(.data)
+        *(.data*)
     }
 
     .bss :
     {
-        *(.bss)
+        *(.bss*)
+        *(COMMON)
     }
-
-    /* Паддинг нулями до 510-го байта от начала сектора, затем сигнатура */
-    . = 0x7C00 + 510;
-    .signature :
-    {
-        SHORT(0xAA55)
-    }
-
-    /* Линкер выдаст ошибку, если код не влезает в 510 байт */
-    ASSERT(. <= 0x7C00 + 512, "ERROR: Bootloader exceeds 512 bytes!")
 }
