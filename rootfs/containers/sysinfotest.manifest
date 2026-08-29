@@ -1,0 +1,5 @@
+# sysinfotest -- Фаза 5, подшаг 5.4 (см. CONTAINER_ARCHITECTURE.md):
+# диски/USB/мышь/время/точки монтирования/chmod/статический IP.
+name=sysinfotest
+path=/bin/sysinfotest
+caps=sysinfo,fs_read,fs_write,net

@@ -1,0 +1,7 @@
+# у этого spawner'а есть spawn+io, но диапазон портов -- ровно как у
+# iodemo-cmos.manifest (0x70..0x71) -- ни портом больше.
+name=spawner-io-narrow
+path=/bin/spawner
+caps=spawn,io
+io_base=0x70
+io_len=2

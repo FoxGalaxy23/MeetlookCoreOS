@@ -1,0 +1,9 @@
+# fstest без caps=fs_read/fs_write -- первый же sys_fs_pwd() внутри
+# fstest должен вернуть SYSCALL_ERR_PERM, и приложение аккуратно
+# завершится с "fstest: FAIL sys_fs_pwd (before)" (см. apps/fstest.c) --
+# не потому что что-то не работает, а потому что этому контейнеру
+# сознательно не дали capability. Ожидаемый результат этого манифеста --
+# "FAIL", а не "OK": так и должно быть, это отрицательная проверка.
+name=fstest-noperms
+path=/bin/fstest
+caps=none

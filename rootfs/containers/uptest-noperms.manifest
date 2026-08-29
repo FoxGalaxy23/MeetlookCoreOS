@@ -1,0 +1,7 @@
+# uptest без caps=users -- первый же sys_users_whoami() должен вернуть
+# SYSCALL_ERR_PERM. Ожидаемый результат -- "FAIL sys_users_whoami", не
+# "OK": отрицательная проверка (см. fstest-noperms.manifest за тем же
+# приёмом).
+name=uptest-noperms
+path=/bin/uptest
+caps=none

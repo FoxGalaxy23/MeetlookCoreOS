@@ -1,0 +1,15 @@
+# create-user -- пишет заголовок нового зашифрованного пользовательского
+# образа (userimg.h) в свободный слот раздела user-images И форматирует
+# тело слота (обычный UFS поверх AES-XTS) -- ATOMIC_PLAN.md, Фазы 3+4.
+# disk_raw -- см. общий комментарий у CAP_DISK_RAW (include/container.h):
+# ядро САМО требует, чтобы текущий вошедший пользователь (kernel/users.c)
+# был root, прежде чем пропустить SYS_DISK_READ_RAW/WRITE_RAW и
+# SYS_FS_FORMAT_HOME_ENCRYPTED -- эта capability здесь не "доверие
+# бинарнику", а необходимое условие, при котором ядро вообще что-то
+# позволит; сам факт наличия disk_raw в манифесте недостаточен без
+# root-сессии. users -- нужен для sys_users_whoami() (см. apps/create-user.c
+# за тем, зачем дублировать проверку на уровне приложения). sysinfo --
+# sys_storage_list(), выбор диска, та же UX, что install-os.
+name=create-user
+path=/bin/create-user
+caps=disk_raw,users,sysinfo

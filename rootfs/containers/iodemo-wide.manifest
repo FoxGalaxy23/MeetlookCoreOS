@@ -1,0 +1,11 @@
+# запрашивает ВЕСЬ диапазон портов (0..0xFFFF) -- при прямом запуске
+# (runc /containers/iodemo-wide.manifest) это разрешат (root/shell
+# полностью доверены), но при попытке породить ЭТОТ манифест из
+# spawner-io-narrow.manifest (см. sys_container_spawn(), kernel/syscall.c)
+# ядро откажет: диапазон ребёнка не является подмножеством диапазона
+# самого spawner'а (0x70..0x71).
+name=iodemo-wide
+path=/bin/iodemo
+caps=io
+io_base=0x0
+io_len=0xFFFF

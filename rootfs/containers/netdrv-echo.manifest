@@ -1,0 +1,6 @@
+# демонстрация Фазы 4, подшаг 3: канал кадров ядро<->драйвер-контейнер
+# (см. apps/netdrv_echo.c, include/netbridge.h). Забирает кадры из TX-очереди
+# (шелл: 'nbtest <text>' кладёт их туда) и эхом кладёт обратно в RX-очередь.
+name=netdrv-echo
+path=/bin/netdrv_echo
+caps=net_bridge

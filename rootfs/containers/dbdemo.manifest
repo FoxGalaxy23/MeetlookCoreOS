@@ -1,0 +1,9 @@
+# dbdemo -- технодемка библиотеки MLDB (include/mldb.h, lib/mldb.c):
+# интерактивный REPL для создания однофайловой базы данных, таблиц,
+# строк, и сохранения/загрузки базы одним файлом через VFS.
+# Требует caps=fs_read,fs_write -- без них savedb/loaddb вернут ошибку
+# прав (SYSCALL_ERR_PERM), но работа с базой в памяти (createdb,
+# createtable, insert, select и т.д.) от файловых прав не зависит.
+name=dbdemo
+path=/bin/dbdemo
+caps=fs_read,fs_write

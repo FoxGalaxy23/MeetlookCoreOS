@@ -1,0 +1,7 @@
+# sysinfotest без caps=sysinfo (но с fs_read/fs_write/net) -- первый же
+# sys_storage_list() должен вернуть SYSCALL_ERR_PERM. SYS_RTC_READ выше
+# в потоке успеет отработать (не требует capability) -- отказ ожидается
+# именно на storage_list, см. apps/sysinfotest.c.
+name=sysinfotest-noperms
+path=/bin/sysinfotest
+caps=fs_read,fs_write,net

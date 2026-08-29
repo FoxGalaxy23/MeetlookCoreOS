@@ -1,0 +1,8 @@
+# gpttest -- Фаза A плана UEFI_PLAN.md: сборка и разбор GPT-таблицы
+# разделов в памяти (lib/gpt.c). Ни одна capability не нужна -- вся
+# работа идёт над буфером в памяти, ни один настоящий диск не
+# затрагивается (в отличие от будущего install-os с UEFI/GPT-режимом,
+# которому в Фазе D потребуется caps=disk_raw,fs_write,sysinfo).
+name=gpttest
+path=/bin/gpttest
+caps=none

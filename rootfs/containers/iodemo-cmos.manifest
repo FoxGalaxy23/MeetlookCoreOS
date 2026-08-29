@@ -1,0 +1,10 @@
+# демонстрация CAP_IO (Фаза 4, подшаг 1): прямой доступ из ring 3 к
+# ровно двум портам CMOS/RTC (0x70 индекс, 0x71 данные) -- ни одного
+# порта больше. Попробуйте также 'run /bin/iodemo' (без манифеста,
+# без CAP_IO) -- получите #GP и "sandboxed program crashed" вместо
+# показаний часов, это ожидаемо (см. apps/iodemo.c).
+name=iodemo-cmos
+path=/bin/iodemo
+caps=io
+io_base=0x70
+io_len=2

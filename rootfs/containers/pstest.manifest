@@ -1,0 +1,6 @@
+# pstest -- Фаза 5, подшаг 5.2 (см. CONTAINER_ARCHITECTURE.md): проверка
+# SYS_PS_LIST (список задач планировщика) и SYS_SLEEP. caps=ps --
+# без него первый же sys_ps_list() вернёт SYSCALL_ERR_PERM.
+name=pstest
+path=/bin/pstest
+caps=ps

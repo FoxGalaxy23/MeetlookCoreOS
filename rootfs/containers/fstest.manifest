@@ -1,0 +1,9 @@
+# fstest -- Фаза 5, подшаг 5.1 (см. CONTAINER_ARCHITECTURE.md): проверка
+# файловых syscall'ов на чтение/навигацию (SYS_FS_READ_FILE/SYS_FS_STAT/
+# SYS_FS_PWD/SYS_FS_CD) вместе с уже существующими на запись
+# (SYS_FS_WRITE_FILE/SYS_FS_MKDIR/SYS_FS_RM) -- полный цикл mkdir->cd->
+# write->stat->read->rm->cd ..->rm. Без caps=fs_read первый же
+# sys_fs_pwd() вернёт SYSCALL_ERR_PERM.
+name=fstest
+path=/bin/fstest
+caps=fs_read,fs_write

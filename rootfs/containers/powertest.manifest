@@ -1,0 +1,8 @@
+# powertest С caps=power, запущенный из-под root -- ДЕЙСТВИТЕЛЬНО
+# перезагрузит машину (см. apps/powertest.c). Не запускайте это
+# случайно вперемешку с другой отладкой -- используйте
+# powertest-noperms.manifest для безопасной проверки того, что запрет
+# вообще работает.
+name=powertest
+path=/bin/powertest
+caps=power

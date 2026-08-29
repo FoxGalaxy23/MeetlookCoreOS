@@ -1,0 +1,4 @@
+# wget пишет скачанный файл на диск -- в отличие от curl, нужен ещё fs_write.
+name=wget-net
+path=/bin/wget
+caps=net,fs_write

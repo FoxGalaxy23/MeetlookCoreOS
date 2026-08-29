@@ -1,0 +1,16 @@
+# install-os -- ставит MeetlookCoreOS на физический диск (INSTALLER_PLAN.md,
+# Фаза 4; NOGRUB_PLAN.md, Фаза C), а также (ATOMIC_PLAN.md, Фаза 2, хвост)
+# умеет писать атомарную GPT-разметку (boot-meta + os-slot-a/b + user-images)
+# -- второй режим внутри ТОГО ЖЕ бинарника, не отдельный. disk_raw --
+# самая опасная capability в системе (см. общий комментарий у
+# CAP_DISK_RAW, include/container.h): прямая посекторная запись на
+# физический диск в обход файловой системы. ЕЁ ТЕПЕРЬ ДАЮТ ДВУМ
+# бинарникам (второй -- create-user, ATOMIC_PLAN.md Фаза 3), не одному
+# -- защита не "список из одного разрешённого имени", а кернел-side
+# гейт users_current_is_root() на самих SYS_DISK_READ_RAW/WRITE_RAW
+# (см. тот же общий комментарий). Прежде чем добавлять disk_raw в ЕЩЁ
+# один манифест -- сначала перечитайте этот комментарий целиком, это
+# осознанное решение, не "на всякий случай".
+name=install-os
+path=/bin/install-os
+caps=disk_raw,fs_read,fs_write,sysinfo

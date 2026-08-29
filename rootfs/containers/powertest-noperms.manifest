@@ -1,0 +1,6 @@
+# powertest без caps=power -- sys_power_reboot() должен вернуть
+# SYSCALL_ERR_PERM вместо реальной перезагрузки. Ожидаемый результат --
+# "FAIL as expected" (см. apps/powertest.c), не настоящая перезагрузка.
+name=powertest-noperms
+path=/bin/powertest
+caps=none

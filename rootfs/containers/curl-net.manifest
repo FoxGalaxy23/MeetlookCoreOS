@@ -1,0 +1,4 @@
+# curl нужна только сеть -- никакой записи на диск, никакой shm.
+name=curl-net
+path=/bin/curl
+caps=net

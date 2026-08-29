@@ -1,0 +1,9 @@
+# демонстрация Фазы 4, подшаг 2: SYS_IRQ_WAIT + CAP_IO вместе --
+# ждём прерывание клавиатуры (IRQ1) из ring 3, затем сами читаем
+# scancode через порты 0x60/0x64 (см. apps/kbdirq.c).
+name=kbdirq
+path=/bin/kbdirq
+caps=io,irq
+io_base=0x60
+io_len=5
+irq=1

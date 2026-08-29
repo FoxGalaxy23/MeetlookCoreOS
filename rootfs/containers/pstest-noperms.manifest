@@ -1,0 +1,7 @@
+# pstest без caps=ps -- первый же sys_ps_list() должен вернуть
+# SYSCALL_ERR_PERM. Ожидаемый результат -- "FAIL", не "OK": это
+# отрицательная проверка (см. fstest-noperms.manifest за тем же
+# приёмом).
+name=pstest-noperms
+path=/bin/pstest
+caps=none

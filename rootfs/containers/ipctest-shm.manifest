@@ -1,0 +1,3 @@
+name=ipctest-shm
+path=/bin/ipctest
+caps=shm

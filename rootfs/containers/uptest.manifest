@@ -1,0 +1,9 @@
+# uptest -- Фаза 5, подшаг 5.3 (см. CONTAINER_ARCHITECTURE.md): полная
+# проверка пользовательских syscall'ов (whoami/list/authenticate/
+# passwd/add/del/su). Требует caps=users И запуска из-под root (см.
+# общий комментарий у CAP_USERS, include/container.h) -- без второго
+# useradd/userdel/чужой passwd/su без пароля вернут SYSCALL_ERR_PERM,
+# даже с caps=users на месте.
+name=uptest
+path=/bin/uptest
+caps=users

@@ -1,0 +1,8 @@
+# у этого spawner'а ЕСТЬ CAP_IRQ -- но для линии 2, не 1. Попытка
+# породить kbdirq.manifest (irq=1) будет отклонена ядром: совпадение
+# бита CAP_IRQ недостаточно, нужна ТА ЖЕ линия (см. sys_container_spawn(),
+# kernel/syscall.c).
+name=spawner-irq-mismatch
+path=/bin/spawner
+caps=spawn,irq
+irq=2

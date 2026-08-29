@@ -1,0 +1,8 @@
+# mbrtest -- Фаза 1 плана инсталлятора (INSTALLER_PLAN.md): сборка и
+# разбор MBR-сектора в памяти (lib/mbr.c). Ни одна capability не нужна
+# -- вся работа идёт над буфером в памяти, ни один настоящий диск не
+# затрагивается (в отличие от будущего install-os, которому в Фазе 4
+# потребуется caps=disk_raw,fs_write,sysinfo).
+name=mbrtest
+path=/bin/mbrtest
+caps=none

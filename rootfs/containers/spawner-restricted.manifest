@@ -1,0 +1,7 @@
+# у этого spawner'а НЕТ net -- попытка породить curl-net.manifest (который
+# просит net) будет отклонена ядром в sys_container_spawn(), несмотря на
+# то, что сам spawn разрешён: caps ребёнка обязаны быть подмножеством
+# caps родителя, а не того, что написано в манифесте ребёнка сам по себе.
+name=spawner-restricted
+path=/bin/spawner
+caps=spawn

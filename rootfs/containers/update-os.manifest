@@ -1,0 +1,12 @@
+# update-os -- ATOMIC_PLAN.md, Фаза 7: пишет текущий kernel.flat в
+# неактивный слот уже установленной Atomic-системы, сверяет по CRC32 и
+# только тогда атомарно переключает boot-meta. disk_raw -- та же
+# capability и тот же кернел-side гейт (users_current_is_root()), что
+# у install-os/create-user -- см. общий комментарий у CAP_DISK_RAW,
+# include/container.h, и в начале apps/update-os.c. users -- нужен для
+# sys_users_whoami() (дублирующая проверка root на уровне приложения,
+# тот же приём, что create-user). sysinfo -- sys_storage_list(), выбор
+# диска, та же UX, что install-os/create-user.
+name=update-os
+path=/bin/update-os
+caps=disk_raw,users,sysinfo
